@@ -5,6 +5,7 @@ Balanceador Lemp
 ## Configuracion del Balanceador
 ### Vamos a usar un SCRIPT el cual nos configurara la maquina como balanceador
 ## SCRIPT
+```
         #!/bin/bash
         #Actualizamos la maquina e instalamos ngix
         sudo apt-get update
@@ -33,7 +34,7 @@ Balanceador Lemp
         #Para que funcione debemos borrar el archivo default en /etc/nginx/sites-enabled/default y reiniciamos el servicio
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
-
+```
 ## Contenido del archivo default
 ### En este archivo hemos incluido las ips de las maquinas nginx e incluir que este servidor actua como balanceador
 ```
