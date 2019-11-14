@@ -76,15 +76,15 @@ server {
 ```
 ## Contenido a modificar en el  Archivo nginx.conf
 ### Aqui indicamos tambien las ips de los servidores nginx y que nuestro balanceador va a actuar como tal, para ello debemos escribir lo siguiente dentro de html
-´´´
- upstream backend {
+```
+upstream backend {
         server 3.93.81.239;
         server 35.175.245.70;
-}
-    server {
+    }
+server {
         location / {
             proxy_pass http://backend;
         }
-}
-´´´
-El repositorio de estos archivos es el siguiente: https://github.com/fages92/balanceador-lemp.git
+    }
+```
+## El repositorio de estos archivos es el siguiente: https://github.com/fages92/balanceador-lemp.git
