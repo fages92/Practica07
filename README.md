@@ -27,11 +27,14 @@ Balanceador Lemp
         sudo rm -r /home/ubuntu/balanceador-lemp
         sudo git clone https://github.com/fages92/balanceador-lemp.git
         cd /home/ubuntu/balanceador-lemp
-        #Ahora vamos a sobreescribir nuestro archivo modificado nginx.conf en /etc/nginx
+       
+       #Ahora vamos a sobreescribir nuestro archivo modificado nginx.conf en /etc/nginx
         sudo mv nginx.conf /etc/nginx
-        #Ahora vamos a sobreescribir nuestro archivo modificado default en /etc/nginx/sites-available
+       
+       #Ahora vamos a sobreescribir nuestro archivo modificado default en /etc/nginx/sites-available
         sudo mv default /etc/nginx/sites-available
-        #Para que funcione debemos borrar el archivo default en /etc/nginx/sites-enabled/default y reiniciamos el servicio
+       
+       #Para que funcione debemos borrar el archivo default en /etc/nginx/sites-enabled/default y reiniciamos el servicio
         sudo rm /etc/nginx/sites-enabled/default
         sudo systemctl restart nginx
 ```
