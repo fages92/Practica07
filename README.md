@@ -6,22 +6,23 @@ Balanceador Lemp
 ### Vamos a usar un SCRIPT el cual nos configurara la maquina como balanceador
 ## SCRIPT
 ```
-        #!/bin/bash
-        #Actualizamos la maquina e instalamos ngix
-        sudo apt-get update
-        sudo apt-get install nginx -y
+  #!/bin/bash
+  #Actualizamos la maquina e instalamos ngix
+  sudo apt-get update
+  sudo apt-get install nginx -y
 
-        #instalacion de php-fpm, php-mysql y git
-        sudo apt-get install php-fpm php-mysql -y
-        apt-get install git -y
+  #instalacion de php-fpm, php-mysql y git
+  sudo apt-get install php-fpm php-mysql -y
+  sudo apt-get install git -y
 
-        #configuracion de php-fpm
-        # con sed modificamos el archivo php.ini en /etc/php/7.2/fpm
-        cd /etc/php/7.2/fpm
-        sed -i 's/;cgi.fix_pathinfo=1/;cgi.fix_pathinfo=0/' php.ini
-        sudo systemctl restart php7.2-fpm
+  #configuracion de php-fpm
+  # con sed modificamos el archivo php.ini en /etc/php/7.2/fpm
+  cd /etc/php/7.2/fpm
+  sudo sed -i 's/;cgi.fix_pathinfo=1/;cgi.fix_pathinfo=0/' php.ini
+  sudo systemctl restart php7.2-fpm
 
-        #configuracion de ngix
+  #configuracion de ngix
+  
         #Primero vamos a acceder a nuestro repositorio para obtener los archivos default y nginx.conf
         cd /home/ubuntu
         sudo rm -r /home/ubuntu/balanceador-lemp
