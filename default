@@ -1,0 +1,35 @@
+http {
+    upstream backend {
+        server 3.93.81.239;
+        server 35.175.245.70;
+    }
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                autoindex on;
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                proxy_pass http://backend;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                # With php7.2-fpm:
+                fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        location ~ /\.ht {
+                deny all;
+        }
+}
